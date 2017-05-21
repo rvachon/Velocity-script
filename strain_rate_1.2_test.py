@@ -88,5 +88,14 @@ eps1yy=dvydy-1/3*epskk;
 # Computing EPSxy
 eps1xy=1/2*(dvxdy+dvydx);
 # Computing EPSII
-epsii=(1/2*(eps1xx**2+eps1yy**2)+eps1xy**2)**0.5;
-plt.imshow(epsii)
+
+def strainII(A,B,C):
+   epsii = (1/2*(A**2+B**2)+C**2)**0.5;
+   print (epsii)
+   return epsii;
+	
+epsii= strainII(eps1xx,eps1yy,eps1xy);
+
+def test_strainII():
+	assert strainII(eps1xx,eps1yy,eps1xy) == 
+#plt.imshow(epsii)
