@@ -22,8 +22,8 @@ Y=1.e+6
 """
 #define the x and y number of nodes that will define the grid.
 """
-Xi=10001
-Yi=10001
+Xi=3001
+Yi=3001
 
 """
 define the size of the step between two nodal points [m]

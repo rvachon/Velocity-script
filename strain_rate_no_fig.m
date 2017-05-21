@@ -6,8 +6,8 @@
 xsize   =   1000000;  % Horizontal size, m
 ysize   =   1500000;  % Vertical size, m
 % Defining resolution
-xnum    =   5001;    % Horizontal resolution (nodal points)
-ynum    =   5001;    % Vertical resolution (nodal points)
+xnum    =   3001;    % Horizontal resolution (nodal points)
+ynum    =   3001;    % Vertical resolution (nodal points)
 % Step between nodal ponts
 xstp    =   xsize/(xnum-1); % Horizontal grid step
 ystp    =   ysize/(ynum-1); % Vertical grid step
