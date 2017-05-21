@@ -16,8 +16,8 @@ figure(1)
 xsize   =   1000000;  % Horizontal size, m
 ysize   =   1500000;  % Vertical size, m
 % Defining resolution
-xnum    =   31;    % Horizontal resolution (nodal points)
-ynum    =   31;    % Vertical resolution (nodal points)
+xnum    =   1001;    % Horizontal resolution (nodal points)
+ynum    =   1001;    % Vertical resolution (nodal points)
 % Step between nodal ponts
 xstp    =   xsize/(xnum-1); % Horizontal grid step
 ystp    =   ysize/(ynum-1); % Vertical grid step
@@ -61,7 +61,7 @@ for i=1:1:ynum
         % Computing EPSxy
         eps1xy(i,j)=1/2*(dvxdy(i,j)+dvydx(i,j));
         % Computing EPSII
-        epsii(i,j)=(1/2*(eps1xx(i,j)^2+eps1yy(i,j)^2)+eps1xy(i,j)^2)^0.5;
+        epsII(i,j)=(1/2*(eps1xx(i,j)^2+eps1yy(i,j)^2)+eps1xy(i,j)^2)^0.5;
         
     end
 end
@@ -113,7 +113,7 @@ axis ij image ;     % directing vertical axis downward, making proper dimensions
 
 % Plotting EPSII
 subplot(2,3,5);     % defining 5th plotting area in the 3x2 figure
-pcolor(x/1000,y/1000,epsii);      % making colormap
+pcolor(x/1000,y/1000,epsII);      % making colormap
 box on;             % making box around the plot
 title('\epsilon_{II} colormap, 1/s');   % title for the plot
 xlabel('x, km');        % title for the horizontal axis
