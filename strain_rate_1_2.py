@@ -22,8 +22,8 @@ Y=1.e+6
 """
 #define the x and y number of nodes that will define the grid.
 """
-Xi=3001
-Yi=3001
+Xi=11
+Yi=11
 
 """
 define the size of the step between two nodal points [m]
@@ -41,7 +41,7 @@ Vy0=1.0e-9
 defining x and y coordinate of each nodal points and
 creating a mesh using the meshgrid numpy function.
 """
-x,y=np.meshgrid(np.arange(0,X,Xstep),np.arange(0,Y,Ystep))
+x,y=np.meshgrid(np.linspace(0,X,Xi),np.linspace(0,Y,Yi))
 
 """
 calculation of the horizontal and vertical component of the velocity at each
@@ -51,18 +51,27 @@ Setup velocity field corresponding to circulation with central upwelling.
 Vx=-Vx0*np.sin(np.pi*x/X*2)*np.cos(np.pi*y/Y)
 Vy=-Vy0*np.sin(np.pi*y/Y)*np.cos(np.pi*x/X*2);
 
-"""
-plt.imshow(Vx, extent = (0,X,0,Y))
-plt.colorbar()
-plt.figure()
-plt.imshow(Vy)
-plt.colorbar()
-"""
 
 """
 calculation of the Velocity magnitude.
 """
+
 Vt = np.sqrt(Vx**2+Vy**2)
+
+"""
+plot of the Vt output
+"""
+
+plt.figure(1)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Velocity magnitude')
+plt.text(100000,900000, 'Xi= 3001 and Yi=3001')
+plt.axis([0,X,0,Y])
+plt.pcolormesh(x,y,Vt)
+plt.colorbar()
+
+
 
 """
 Computing partial derivatives 
@@ -112,3 +121,13 @@ def strainII(A,B,C):
    return epsii;
    
 epsii= strainII(eps1xx,eps1yy,eps1xy);
+
+plt.figure(2)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Strain rate 2nd Invariant')
+plt.text(100000,900000, 'Xi= 3001 and Yi=3001')
+plt.axis([0,X,0,Y])
+plt.pcolormesh(x,y,epsii)
+plt.colorbar()
+plt.show()
